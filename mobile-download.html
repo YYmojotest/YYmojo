@@ -6,23 +6,6 @@
     <meta name="description" content="YYMojo - 打开AI潮玩新世界。AI手办创作平台">
     <title>YYMojo - 打开AI潮玩新世界</title>
     <style>
-        :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary-color: #8b5cf6;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --bg-dark: #0f172a;
-            --bg-darker: #020617;
-            --card-bg: #1e293b;
-            --white: #ffffff;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-            --border-radius: 20px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -35,8 +18,6 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
-            color: var(--text-primary);
             line-height: 1.5;
             min-height: 100vh;
             width: 100%;
@@ -45,391 +26,152 @@
             position: relative;
         }
 
-        /* Cyberpunk background effects */
-        body::before {
-            content: '';
-            position: absolute;
+        /* Use the exact background image */
+        .background-container {
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
-                linear-gradient(45deg, transparent 48%, rgba(99, 102, 241, 0.2) 50%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(139, 92, 246, 0.2) 50%, transparent 52%);
-            pointer-events: none;
+            background-image: url('yymojo-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 0;
         }
 
-        .container {
-            width: 100%;
-            max-width: 100%;
-            padding: 0 16px;
-            margin: 0 auto;
+        .content-overlay {
             position: relative;
             z-index: 1;
-        }
-
-        /* Header with Treasure Chest Effect */
-        .header {
-            text-align: center;
-            padding: 20px 0 30px;
-            width: 100%;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .logo {
-            font-size: clamp(32px, 8vw, 40px);
-            font-weight: 800;
-            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
-            line-height: 1.2;
-            text-shadow: 0 0 20px rgba(102, 102, 241, 0.3);
-            position: relative;
-        }
-
-        .tagline {
-            font-size: clamp(22px, 6.5vw, 28px);
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.3;
-            color: var(--text-primary);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Treasure Chest Container */
-        .treasure-container {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-            height: 200px;
-            margin: 0 auto 30px;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             align-items: center;
-            justify-content: center;
-        }
-
-        .treasure-chest {
-            position: relative;
+            padding-bottom: 40px;
             width: 100%;
-            height: 120px;
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-            border-radius: 12px 12px 8px 8px;
-            box-shadow: 
-                0 0 30px rgba(139, 69, 19, 0.6),
-                inset 0 4px 8px rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 2px solid #DAA520;
         }
 
-        .chest-lid {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 40px;
-            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
-            border-radius: 20px 20px 0 0;
-            box-shadow: 
-                0 0 20px rgba(218, 165, 32, 0.6),
-                inset 0 2px 4px rgba(255, 255, 255, 0.3);
-            border: 2px solid #FFD700;
-        }
-
-        .character-pedestal {
-            position: absolute;
-            bottom: 0;
-            width: 60px;
-            height: 30px;
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
-        }
-
-        .character-avatar {
-            position: absolute;
-            bottom: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.8);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Floating cards effect */
-        .floating-cards {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-        }
-
-        .floating-card {
-            position: absolute;
-            width: 30px;
-            height: 40px;
-            background: rgba(99, 102, 241, 0.3);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
-            opacity: 0.7;
-            animation: floatRandom 8s infinite ease-in-out;
-        }
-
-        .card-1 { top: 20%; left: 15%; animation-delay: 0s; }
-        .card-2 { top: 30%; right: 20%; animation-delay: 2s; }
-        .card-3 { bottom: 25%; left: 25%; animation-delay: 4s; }
-        .card-4 { bottom: 35%; right: 15%; animation-delay: 6s; }
-
-        /* Download Buttons */
-        .download-section {
-            width: 100%;
-            max-width: 100%;
-            padding: 0 16px;
-            margin-top: 20px;
-        }
-
+        /* Download Buttons - positioned over the existing buttons in the image */
         .download-buttons {
             display: grid;
             gap: 20px;
-            width: 100%;
-            max-width: 100%;
+            width: 90%;
+            max-width: 400px;
             margin: 0 auto;
         }
 
         .download-button {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 24px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px 16px;
             text-align: center;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             text-decoration: none;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 140px;
+            min-height: 120px;
             width: 100%;
-            border: 3px solid transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
         }
 
         .download-button:hover,
         .download-button:focus {
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        .platform-icon-large {
-            width: 60px;
-            height: 60px;
+        .platform-icon {
+            width: 50px;
+            height: 50px;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            border-radius: 16px;
+            border-radius: 12px;
             color: white;
         }
 
-        .android .platform-icon-large {
+        .android .platform-icon {
             background: linear-gradient(135deg, #3ddc84 0%, #2ecc71 100%);
         }
 
-        .ios .platform-icon-large {
+        .ios .platform-icon {
             background: linear-gradient(135deg, #007aff 0%, #0056b3 100%);
         }
 
-        .harmony .platform-icon-large {
+        .harmony .platform-icon {
             background: linear-gradient(135deg, #ff6a00 0%, #ff4500 100%);
         }
 
-        .platform-name-large {
+        .platform-name {
             font-size: clamp(18px, 5vw, 22px);
             font-weight: 700;
-            color: var(--text-primary);
+            color: white;
             line-height: 1.3;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px 0 20px;
-            color: var(--text-secondary);
-            font-size: clamp(12px, 3vw, 13px);
-            width: 100%;
-            font-weight: 500;
-            margin-top: auto;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes floatRandom {
-            0%, 100% { 
-                transform: translate(0px, 0px) rotate(0deg);
-                opacity: 0.7;
-            }
-            25% { 
-                transform: translate(10px, -15px) rotate(5deg);
-                opacity: 0.9;
-            }
-            50% { 
-                transform: translate(-8px, 12px) rotate(-3deg);
-                opacity: 0.6;
-            }
-            75% { 
-                transform: translate(5px, 8px) rotate(2deg);
-                opacity: 0.8;
-            }
-        }
-
-        /* Glowing effect for logo */
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(102, 102, 241, 0.3); }
-            50% { text-shadow: 0 0 30px rgba(102, 102, 241, 0.6); }
-        }
-        
-        .logo {
-            animation: glow 3s ease-in-out infinite;
-        }
-        
-        /* Hover glow effect */
-        .download-button:hover .platform-icon-large {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* Responsive Design */
         @media (max-width: 320px) {
-            .container {
-                padding: 0 12px;
-            }
-            
-            .header {
-                padding: 16px 0 24px;
-            }
-            
-            .treasure-container {
-                max-width: 260px;
-                height: 180px;
-            }
-            
             .download-button {
-                padding: 20px 12px;
-                min-height: 130px;
+                padding: 16px 12px;
+                min-height: 110px;
             }
             
-            .platform-icon-large {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
+            .platform-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .platform-name {
+                font-size: 18px;
             }
         }
 
         @media (min-width: 321px) and (max-width: 375px) {
-            .container {
-                padding: 0 14px;
-            }
-            
-            .treasure-container {
-                max-width: 280px;
-                height: 190px;
-            }
-            
             .download-button {
-                padding: 22px 14px;
-                min-height: 135px;
+                padding: 18px 14px;
+                min-height: 115px;
             }
         }
 
         @media (min-width: 376px) and (max-width: 414px) {
-            .container {
-                padding: 0 16px;
-            }
-            
-            .treasure-container {
-                max-width: 300px;
-                height: 200px;
-            }
-            
             .download-button {
-                padding: 24px 16px;
-                min-height: 140px;
+                padding: 20px 16px;
+                min-height: 120px;
             }
         }
 
         @media (min-width: 415px) and (max-width: 767px) {
-            .container {
-                padding: 0 20px;
-            }
-            
-            .treasure-container {
-                max-width: 320px;
-                height: 220px;
-            }
-            
             .download-button {
-                padding: 26px 18px;
-                min-height: 145px;
+                padding: 22px 18px;
+                min-height: 125px;
             }
             
-            .platform-icon-large {
-                width: 65px;
-                height: 65px;
-                font-size: 30px;
+            .platform-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 26px;
             }
         }
 
         @media (min-width: 768px) {
             html {
                 font-size: 18px;
-            }
-            
-            .container {
-                max-width: 500px;
-                padding: 0 24px;
-            }
-            
-            .header {
-                padding: 24px 0 36px;
-            }
-            
-            .treasure-container {
-                max-width: 350px;
-                height: 240px;
             }
             
             .download-buttons {
@@ -439,49 +181,18 @@
             }
             
             .download-button {
-                padding: 28px 20px;
-                min-height: 160px;
+                padding: 24px 20px;
+                min-height: 140px;
             }
             
-            .platform-icon-large {
-                width: 70px;
-                height: 70px;
-                font-size: 32px;
+            .platform-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
             }
             
-            .tagline {
-                font-size: 32px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            html {
-                font-size: 20px;
-            }
-            
-            .container {
-                max-width: 550px;
-                padding: 0 32px;
-            }
-            
-            .treasure-container {
-                max-width: 380px;
-                height: 260px;
-            }
-            
-            .download-buttons {
-                max-width: 550px;
-            }
-            
-            .download-button {
-                padding: 32px 24px;
-                min-height: 170px;
-            }
-            
-            .platform-icon-large {
-                width: 80px;
-                height: 80px;
-                font-size: 36px;
+            .platform-name {
+                font-size: 24px;
             }
         }
 
@@ -493,65 +204,35 @@
             }
         }
 
-        /* Ensure no horizontal scroll */
-        body, .container {
-            overflow-x: hidden;
-        }
-        
-        /* Focus styles */
+        /* Focus styles for accessibility */
         .download-button:focus-visible {
-            outline: 3px solid var(--primary-color);
+            outline: 3px solid white;
             outline-offset: 3px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">YYMojo</div>
-            <h1 class="tagline">打开AI潮玩新世界</h1>
+    <!-- Exact background image -->
+    <div class="background-container"></div>
+    
+    <!-- Overlay content with download buttons -->
+    <div class="content-overlay">
+        <div class="download-buttons">
+            <a href="http://download.yymojo.com/zvyjd61x" class="download-button android" id="android-link" tabindex="0">
+                <div class="platform-icon">ANDROID</div>
+                <div class="platform-name">Android</div>
+            </a>
             
-            <!-- Treasure Chest with Character -->
-            <div class="treasure-container">
-                <div class="treasure-chest">
-                    <div class="chest-lid"></div>
-                    <div class="character-pedestal"></div>
-                    <div class="character-avatar">🐻</div>
-                </div>
-                <div class="floating-cards">
-                    <div class="floating-card card-1"></div>
-                    <div class="floating-card card-2"></div>
-                    <div class="floating-card card-3"></div>
-                    <div class="floating-card card-4"></div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Download Buttons -->
-        <section class="download-section">
-            <div class="download-buttons">
-                <a href="http://download.yymojo.com/zvyjd61x" class="download-button android" id="android-link" tabindex="0">
-                    <div class="platform-icon-large">ANDROID</div>
-                    <div class="platform-name-large">Android</div>
-                </a>
-                
-                <a href="#" class="download-button ios" id="ios-link" tabindex="0">
-                    <div class="platform-icon-large">IOS</div>
-                    <div class="platform-name-large">iOS</div>
-                </a>
-                
-                <a href="#" class="download-button harmony" id="harmony-link" tabindex="0">
-                    <div class="platform-icon-large">HARMONY</div>
-                    <div class="platform-name-large">鸿蒙</div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>© 2026 YYMojo</p>
-        </footer>
+            <a href="#" class="download-button ios" id="ios-link" tabindex="0">
+                <div class="platform-icon">IOS</div>
+                <div class="platform-name">iOS</div>
+            </a>
+            
+            <a href="#" class="download-button harmony" id="harmony-link" tabindex="0">
+                <div class="platform-icon">HARMONY</div>
+                <div class="platform-name">鸿蒙</div>
+            </a>
+        </div>
     </div>
 
     <script>
