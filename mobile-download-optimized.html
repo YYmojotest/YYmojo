@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="YYMojo - 打开AI潮玩新世界。AI手办创作平台">
+    <title>YYMojo - 打开AI潮玩新世界</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            position: relative;
+            background: black;
+        }
+
+        /* Enhanced background with subtle overlay */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('yymojo-background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        /* Subtle gradient overlay for better text readability */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, 
+                rgba(0, 0, 0, 0.2) 0%, 
+                rgba(0, 0, 0, 0.4) 50%, 
+                rgba(0, 0, 0, 0.6) 100%);
+            z-index: 0;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 60px;
+            width: 100%;
+        }
+
+        /* Enhanced Download Buttons */
+        .download-buttons {
+            display: flex;
+            gap: 24px;
+            width: 90%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .download-button {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 28px 16px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            width: 100%;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.1), 
+                rgba(255, 255, 255, 0.05), 
+                rgba(255, 255, 255, 0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .download-button:hover,
+        .download-button:focus {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .download-button:active {
+            transform: translateY(-4px) scale(1.01);
+            transition: all 0.1s ease;
+        }
+
+        .platform-icon {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            border-radius: 20px;
+            color: white;
+            opacity: 0.95;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover .platform-icon {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .android .platform-icon {
+            background: linear-gradient(135deg, #3ddc84 0%, #2ecc71 100%);
+            box-shadow: 0 4px 12px rgba(61, 220, 132, 0.3);
+        }
+
+        .ios .platform-icon {
+            background: linear-gradient(135deg, #007aff 0%, #0056b3 100%);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+
+        .harmony .platform-icon {
+            background: linear-gradient(135deg, #ff6a00 0%, #ff4500 100%);
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+        }
+
+        .platform-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+            line-height: 1.3;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            opacity: 0.98;
+            letter-spacing: -0.5px;
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 320px) {
+            .download-buttons {
+                gap: 20px;
+            }
+            
+            .download-button {
+                padding: 24px 12px;
+                min-height: 140px;
+                border-radius: 22px;
+            }
+            
+            .platform-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                margin-bottom: 12px;
+                border-radius: 16px;
+            }
+            
+            .platform-name {
+                font-size: 20px;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 375px) {
+            .download-button {
+                padding: 26px 14px;
+                min-height: 145px;
+            }
+            
+            .platform-icon {
+                width: 66px;
+                height: 66px;
+            }
+        }
+
+        @media (min-width: 376px) and (max-width: 414px) {
+            .download-button {
+                padding: 28px 16px;
+                min-height: 150px;
+            }
+        }
+
+        @media (min-width: 415px) and (max-width: 767px) {
+            .download-button {
+                padding: 30px 18px;
+                min-height: 155px;
+            }
+            
+            .platform-icon {
+                width: 76px;
+                height: 76px;
+                font-size: 30px;
+            }
+            
+            .platform-name {
+                font-size: 24px;
+            }
+        }
+
+        /* Tablet/Desktop - single column */
+        @media (min-width: 768px) {
+            .download-buttons {
+                flex-direction: column;
+                gap: 28px;
+                max-width: 340px;
+            }
+            
+            .download-button {
+                padding: 32px 20px;
+                min-height: 165px;
+                border-radius: 28px;
+            }
+            
+            .platform-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+                border-radius: 22px;
+            }
+            
+            .platform-name {
+                font-size: 26px;
+            }
+        }
+
+        /* Safe area handling */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+
+        /* Focus styles for accessibility */
+        .download-button:focus-visible {
+            outline: 3px solid rgba(255, 255, 255, 0.8);
+            outline-offset: 4px;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Loading state animation */
+        .download-button.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .download-button.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Exact background image -->
+    <div class="background-container"></div>
+    <!-- Enhanced gradient overlay -->
+    <div class="background-overlay"></div>
+    
+    <!-- Overlay content with enhanced download buttons -->
+    <div class="content-overlay">
+        <div class="download-buttons">
+            <a href="http://download.yymojo.com/zvyjd61x" class="download-button android" id="android-link" tabindex="0">
+                <div class="platform-icon">ANDROID</div>
+                <div class="platform-name">Android</div>
+            </a>
+            
+            <a href="#" class="download-button ios" id="ios-link" tabindex="0">
+                <div class="platform-icon">IOS</div>
+                <div class="platform-name">iOS</div>
+            </a>
+            
+            <a href="#" class="download-button harmony" id="harmony-link" tabindex="0">
+                <div class="platform-icon">HARMONY</div>
+                <div class="platform-name">鸿蒙</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced keyboard support with loading states
+        document.querySelectorAll('.download-button').forEach(button => {
+            button.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+            
+            // Add loading state for Android link
+            if (button.id === 'android-link') {
+                button.addEventListener('click', function(e) {
+                    // Add loading state
+                    this.classList.add('loading');
+                    
+                    // Remove loading state after a short delay (simulating actual load)
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                    }, 2000);
+                });
+            }
+            
+            // iOS and Harmony - show coming soon message
+            if (button.id === 'ios-link' || button.id === 'harmony-link') {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('敬请期待！即将上线');
+                });
+            }
+        });
+        
+        // Smooth scroll to buttons on load
+        window.addEventListener('load', () => {
+            const buttonsContainer = document.querySelector('.download-buttons');
+            if (buttonsContainer) {
+                setTimeout(() => {
+                    buttonsContainer.style.opacity = '0';
+                    buttonsContainer.style.transform = 'translateY(20px)';
+                    buttonsContainer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    
+                    setTimeout(() => {
+                        buttonsContainer.style.opacity = '1';
+                        buttonsContainer.style.transform = 'translateY(0)';
+                    }, 100);
+                }, 300);
+            }
+        });
+    </script>
+</body>
+</html>
