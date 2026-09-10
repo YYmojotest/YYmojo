@@ -24,6 +24,7 @@
             overflow-x: hidden;
             padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
             position: relative;
+            background: black;
         }
 
         /* Use the exact background image */
@@ -33,7 +34,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('yymojo-background.jpg');
+            background-image: url('yymojo-background.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -48,60 +49,57 @@
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            padding-bottom: 40px;
+            padding-bottom: 60px;
             width: 100%;
         }
 
-        /* Download Buttons - positioned over the existing buttons in the image */
+        /* Download Buttons - positioned to match the original image buttons */
         .download-buttons {
-            display: grid;
-            gap: 20px;
+            display: flex;
+            gap: 24px;
             width: 90%;
             max-width: 400px;
             margin: 0 auto;
         }
 
         .download-button {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 20px 16px;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(0px);
+            border-radius: 20px;
+            padding: 24px 12px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
             cursor: pointer;
             text-decoration: none;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 120px;
+            min-height: 140px;
             width: 100%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid transparent;
             position: relative;
             overflow: hidden;
         }
 
         .download-button:hover,
         .download-button:focus {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .platform-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 12px;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            border-radius: 12px;
+            border-radius: 16px;
             color: white;
+            opacity: 0.9;
         }
 
         .android .platform-icon {
@@ -117,24 +115,30 @@
         }
 
         .platform-name {
-            font-size: clamp(18px, 5vw, 22px);
+            font-size: 20px;
             font-weight: 700;
             color: white;
             line-height: 1.3;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+            opacity: 0.95;
         }
 
-        /* Responsive Design */
+        /* Responsive Design for mobile portrait */
         @media (max-width: 320px) {
+            .download-buttons {
+                gap: 20px;
+            }
+            
             .download-button {
-                padding: 16px 12px;
-                min-height: 110px;
+                padding: 20px 10px;
+                min-height: 130px;
             }
             
             .platform-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                margin-bottom: 12px;
             }
             
             .platform-name {
@@ -144,51 +148,52 @@
 
         @media (min-width: 321px) and (max-width: 375px) {
             .download-button {
-                padding: 18px 14px;
-                min-height: 115px;
+                padding: 22px 11px;
+                min-height: 135px;
             }
         }
 
         @media (min-width: 376px) and (max-width: 414px) {
             .download-button {
-                padding: 20px 16px;
-                min-height: 120px;
+                padding: 24px 12px;
+                min-height: 140px;
             }
         }
 
         @media (min-width: 415px) and (max-width: 767px) {
             .download-button {
-                padding: 22px 18px;
-                min-height: 125px;
+                padding: 26px 14px;
+                min-height: 145px;
             }
             
             .platform-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 26px;
+                width: 65px;
+                height: 65px;
+                font-size: 30px;
+            }
+            
+            .platform-name {
+                font-size: 22px;
             }
         }
 
+        /* For larger screens, keep it as single column to match mobile portrait */
         @media (min-width: 768px) {
-            html {
-                font-size: 18px;
-            }
-            
             .download-buttons {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 24px;
-                max-width: 500px;
+                flex-direction: column;
+                gap: 28px;
+                max-width: 320px;
             }
             
             .download-button {
-                padding: 24px 20px;
-                min-height: 140px;
+                padding: 28px 16px;
+                min-height: 160px;
             }
             
             .platform-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 28px;
+                width: 70px;
+                height: 70px;
+                font-size: 32px;
             }
             
             .platform-name {
