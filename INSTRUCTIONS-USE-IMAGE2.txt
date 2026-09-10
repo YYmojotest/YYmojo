@@ -1,0 +1,19 @@
+# 使用GPT Image2创建YYMojo下载页面
+
+## 步骤1: 生成背景图像
+1. 在OpenClaw界面中选择模型: gpt-image2/gpt-4o-image2
+2. 输入以下提示词:
+   "Create a mobile app download page background for YYMojo AI toy platform with deep purple to black vertical gradient, modern elegant professional style, no text no buttons just pure background, 1080x1920 pixels, high quality"
+
+## 步骤2: 保存生成的图像
+1. 将生成的图像保存为: yymojo-background-image2.png
+2. 放在同一个目录: D:\项目文件\Github\YYmojo\
+
+## 步骤3: 启用图像背景
+1. 打开文件: mobile-download-image2-ready.html
+2. 注释掉第20行的渐变背景
+3. 取消注释第22-25行的背景图像设置
+4. 保存文件
+
+## 最终效果
+你将拥有一个真正由Image2大模型创建的YYMojo下载页面！

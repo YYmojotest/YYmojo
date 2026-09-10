@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="YYMojo - 打开AI潮玩新世界">
+    <title>YYMojo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* 使用你提供的背景图 */
+            background-image: url('./01a08afd-a08d-75d9-9716-1f053ef03d7b.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            padding: 20px;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        /* 透明可点击按钮 - 覆盖在你的背景图按钮位置上 */
+        .download-overlay {
+            position: absolute;
+            /* 根据常见的手机页面布局设置位置 */
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%; /* 按钮宽度 */
+            height: 60px; /* 按钮高度 */
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            z-index: 10;
+        }
+
+        /* 如果需要显示文字提示（可选） */
+        .subtitle {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+            z-index: 5;
+        }
+
+        /* iPhone安全区域适配 */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+            
+            .download-overlay {
+                top: calc(60% + env(safe-area-inset-top));
+            }
+            
+            .subtitle {
+                bottom: calc(30px + env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 透明覆盖按钮 -->
+    <button class="download-overlay" onclick="window.location.href='http://download.yymojo.com/zvyjd61x'"></button>
+    
+    <!-- 平台信息文字 -->
+    <div class="subtitle">Android版已上线 · iOS/鸿蒙版即将推出</div>
+</body>
+</html>

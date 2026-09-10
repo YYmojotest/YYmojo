@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="YYMojo - 打开AI潮玩新世界">
+    <title>YYMojo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* 深紫色到黑色的垂直渐变背景 */
+            background: linear-gradient(180deg, 
+                #2d1b4e 0%,      /* 深紫色 */
+                #1a1033 50%,     /* 中深紫 */
+                #000000 100%);   /* 纯黑 */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            padding: 20px;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .download-btn {
+            /* 白色半透明按钮 */
+            background: rgba(255, 255, 255, 0.95);
+            color: #000000;
+            border: none;
+            border-radius: 16px;
+            padding: 18px 0;
+            font-size: 22px;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            /* 精致阴影 */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-top: 16px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 320px) {
+            .download-btn {
+                padding: 16px 0;
+                font-size: 20px;
+                border-radius: 14px;
+            }
+            .subtitle {
+                font-size: 13px;
+                margin-top: 14px;
+            }
+        }
+
+        @media (min-width: 375px) {
+            .download-btn {
+                padding: 20px 0;
+                font-size: 24px;
+                border-radius: 18px;
+            }
+            .subtitle {
+                font-size: 15px;
+                margin-top: 18px;
+            }
+        }
+
+        /* iPhone安全区域适配 */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="download-btn" onclick="window.location.href='http://download.yymojo.com/zvyjd61x'">立即下载</button>
+        <div class="subtitle">Android版已上线 · iOS/鸿蒙版即将推出</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+Create a complete mobile app download page design for YYMojo AI toy platform with the following specifications:
+
+Visual Style:
+- Dark theme with deep purple to black vertical gradient background (#2d1b4e at top, #000000 at bottom)
+- Modern, elegant, professional aesthetic
+- Clean and minimal design with premium feel
+- High contrast for readability
+
+Layout Elements:
+- Large white semi-transparent download button in center (with subtle blur effect)
+- Button text: "立即下载" in bold black font
+- Subtitle below button: "Android版已上线 · iOS/鸿蒙版即将推出" in light gray
+- No logos, no additional graphics, just pure background with text elements
+- Perfect vertical centering on mobile screen
+
+Technical Specifications:
+- 1080x1920 pixels resolution (9:16 aspect ratio)
+- PNG format with proper transparency
+- Optimized for mobile web display
+- Professional quality suitable for production use
+
+Mood: Futuristic, sophisticated, AI-powered, creative, premium collectible toy platform

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="YYMojo - 打开AI潮玩新世界。AI手办创作平台">
+    <title>YYMojo - 打开AI潮玩新世界</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            position: relative;
+            background: #000000; /* 纯黑背景 */
+        }
+
+        .content-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* YYMojo Logo - 极简风格 */
+        .brand-logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            letter-spacing: -0.5px;
+        }
+
+        /* 三个平台下载按钮容器 */
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 320px;
+            margin-bottom: 30px;
+        }
+
+        /* 平台下载按钮 */
+        .platform-button {
+            border: none;
+            border-radius: 24px;
+            padding: 18px 24px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            min-height: 72px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .platform-button:hover,
+        .platform-button:focus {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .platform-button:active {
+            transform: translateY(-1px) scale(1.01);
+            transition: all 0.1s ease;
+        }
+
+        /* 平台图标 */
+        .platform-icon {
+            width: 36px;
+            height: 36px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border-radius: 12px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Android 按钮样式 */
+        .android-button {
+            background: linear-gradient(135deg, #3ddc84 0%, #2ecc71 100%);
+            box-shadow: 0 6px 16px rgba(61, 220, 132, 0.4);
+        }
+
+        .android-button:hover,
+        .android-button:focus {
+            box-shadow: 0 8px 24px rgba(61, 220, 132, 0.6);
+        }
+
+        /* iOS 按钮样式 */
+        .ios-button {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .ios-button:hover,
+        .ios-button:focus {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        /* HarmonyOS 按钮样式 */
+        .harmony-button {
+            background: linear-gradient(135deg, #ff6a00 0%, #ff4500 100%);
+            box-shadow: 0 6px 16px rgba(255, 106, 0, 0.4);
+        }
+
+        .harmony-button:hover,
+        .harmony-button:focus {
+            box-shadow: 0 8px 24px rgba(255, 106, 0, 0.6);
+        }
+
+        .platform-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.5px;
+        }
+
+        /* 底部小字提示 */
+        .footer-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            max-width: 300px;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 320px) {
+            .brand-logo { 
+                font-size: 28px; 
+                margin-bottom: 30px;
+            }
+            .download-buttons {
+                gap: 14px;
+                max-width: 280px;
+            }
+            .platform-button {
+                padding: 16px 22px;
+                min-height: 68px;
+                border-radius: 22px;
+            }
+            .platform-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 22px;
+                margin-right: 14px;
+                border-radius: 10px;
+            }
+            .platform-name { font-size: 18px; }
+            .footer-text { 
+                font-size: 13px; 
+                margin-top: 25px;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 375px) {
+            .brand-logo { font-size: 30px; }
+            .download-buttons { max-width: 300px; }
+            .platform-button {
+                padding: 17px 23px;
+                min-height: 70px;
+                border-radius: 23px;
+            }
+            .platform-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 23px;
+                margin-right: 15px;
+                border-radius: 11px;
+            }
+            .platform-name { font-size: 19px; }
+        }
+
+        @media (min-width: 376px) and (max-width: 414px) {
+            .brand-logo { font-size: 32px; }
+            .download-buttons { max-width: 320px; }
+            .platform-button {
+                padding: 18px 24px;
+                min-height: 72px;
+                border-radius: 24px;
+            }
+            .platform-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 24px;
+                margin-right: 16px;
+                border-radius: 12px;
+            }
+            .platform-name { font-size: 20px; }
+        }
+
+        @media (min-width: 415px) and (max-width: 767px) {
+            .brand-logo { font-size: 34px; }
+            .download-buttons { max-width: 340px; }
+            .platform-button {
+                padding: 20px 26px;
+                min-height: 76px;
+                border-radius: 26px;
+            }
+            .platform-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 26px;
+                margin-right: 18px;
+                border-radius: 14px;
+            }
+            .platform-name { font-size: 22px; }
+            .footer-text { font-size: 15px; }
+        }
+
+        @media (min-width: 768px) {
+            .brand-logo { font-size: 36px; }
+            .download-buttons { max-width: 360px; }
+            .platform-button {
+                padding: 22px 28px;
+                min-height: 80px;
+                border-radius: 28px;
+            }
+            .platform-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 28px;
+                margin-right: 20px;
+                border-radius: 16px;
+            }
+            .platform-name { font-size: 24px; }
+            .footer-text { font-size: 16px; }
+        }
+
+        /* Safe area handling */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+
+        /* Focus styles for accessibility */
+        .platform-button:focus-visible {
+            outline: 3px solid rgba(255, 255, 255, 0.8);
+            outline-offset: 4px;
+        }
+
+        /* Loading state animation */
+        .platform-button.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .platform-button.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Entrance animation */
+        .content-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        body.loaded .content-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="brand-logo">YYMojo</div>
+        <div class="download-buttons">
+            <a href="http://download.yymojo.com/zvyjd61x" class="platform-button android-button" id="android-link" tabindex="0">
+                <div class="platform-icon">🤖</div>
+                <div class="platform-name">Android</div>
+            </a>
+            
+            <a href="#" class="platform-button ios-button" id="ios-link" tabindex="0">
+                <div class="platform-icon">📱</div>
+                <div class="platform-name">iOS</div>
+            </a>
+            
+            <a href="#" class="platform-button harmony-button" id="harmony-link" tabindex="0">
+                <div class="platform-icon">🚀</div>
+                <div class="platform-name">鸿蒙</div>
+            </a>
+        </div>
+        <div class="footer-text">打开AI潮玩新世界</div>
+    </div>
+
+    <script>
+        // Keyboard support
+        document.querySelectorAll('.platform-button').forEach(button => {
+            button.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+        
+        // Add loading state for Android link
+        document.getElementById('android-link').addEventListener('click', function(e) {
+            this.classList.add('loading');
+            setTimeout(() => {
+                this.classList.remove('loading');
+            }, 2000);
+        });
+        
+        // iOS and Harmony - show coming soon message
+        document.getElementById('ios-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('敬请期待！即将上线');
+        });
+        
+        document.getElementById('harmony-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('敬请期待！即将上线');
+        });
+        
+        // Entrance animation
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

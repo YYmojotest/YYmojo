@@ -1,0 +1,21 @@
+Create a mobile app download page background for YYMojo AI toy platform with the following specifications:
+
+Style: Modern, elegant, professional, dark theme
+Color scheme: Deep purple to black gradient (#2d1b4e to #000000)
+Layout: Vertical mobile screen (9:16 aspect ratio)
+Elements: 
+- Smooth vertical gradient background from deep purple at top to pure black at bottom
+- Subtle geometric patterns or abstract shapes in the background (very low opacity, barely visible)
+- Clean, minimal design with plenty of negative space
+- No text, no buttons, no logos - just pure background
+- Professional and premium feel suitable for an AI-powered collectible toy platform
+- High contrast areas where download button will be placed (center area should be slightly lighter)
+
+Technical requirements:
+- 1080x1920 pixels resolution
+- PNG format with transparency support
+- Optimized for mobile web display
+- Dark mode friendly
+- No harsh edges or distracting elements
+
+Mood: Futuristic, sophisticated, AI-powered, creative, premium
