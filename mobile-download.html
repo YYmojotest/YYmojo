@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="YYMojo - AI手办创作平台 | 一句话生成形象 · 注入会聊天的灵魂 · 打印成摆在桌上的它">
-    <title>YYMojo - 移动端下载</title>
+    <meta name="description" content="YYMojo - 让喜欢的角色，触手可及。AI手办创作平台">
+    <title>YYMojo - 让喜欢的角色，触手可及</title>
     <style>
         :root {
             --primary-color: #6366f1;
@@ -33,7 +33,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             color: var(--text-primary);
             line-height: 1.5;
             min-height: 100vh;
@@ -59,36 +59,26 @@
         .logo {
             font-size: clamp(24px, 6vw, 32px);
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary-color);
             margin-bottom: 8px;
             line-height: 1.2;
         }
 
         .tagline {
-            font-size: clamp(14px, 4vw, 16px);
-            color: var(--text-secondary);
-            font-weight: 500;
+            font-size: clamp(16px, 4.5vw, 20px);
+            font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.4;
-        }
-
-        .hero-title {
-            font-size: clamp(20px, 6vw, 26px);
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.3;
-            width: 100%;
+            color: var(--text-primary);
         }
 
         .hero-subtitle {
-            font-size: clamp(12px, 3.5vw, 14px);
+            font-size: clamp(14px, 3.8vw, 16px);
             color: var(--text-secondary);
             width: 100%;
             margin: 0 auto;
             line-height: 1.5;
+            font-weight: 500;
         }
 
         /* App Links Section */
@@ -129,11 +119,14 @@
             justify-content: center;
             min-height: 100px;
             width: 100%;
+            border: 2px solid transparent;
         }
 
-        .platform-card:hover {
+        .platform-card:hover,
+        .platform-card:focus {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
         }
 
         .platform-icon {
@@ -144,6 +137,7 @@
             align-items: center;
             justify-content: center;
             font-size: 20px;
+            font-weight: bold;
         }
 
         .android .platform-icon {
@@ -166,13 +160,13 @@
         }
 
         .platform-desc {
-            font-size: clamp(10px, 3vw, 12px);
+            font-size: clamp(12px, 3.2vw, 14px);
             color: var(--text-secondary);
             line-height: 1.4;
         }
 
-        /* Features Section */
-        .features {
+        /* Core Features Section */
+        .core-features {
             padding: 28px 0;
             background: var(--white);
             width: 100%;
@@ -187,8 +181,8 @@
         .feature-item {
             display: flex;
             align-items: flex-start;
-            padding: 14px 0;
-            border-bottom: 1px solid #f3f4f6;
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
             width: 100%;
         }
 
@@ -197,17 +191,18 @@
         }
 
         .feature-icon {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            border-radius: 50%;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px;
+            margin-right: 14px;
             flex-shrink: 0;
             color: white;
-            font-size: 12px;
+            font-size: 14px;
+            font-weight: bold;
         }
 
         .feature-text {
@@ -216,14 +211,14 @@
         }
 
         .feature-title {
-            font-size: clamp(13px, 3.8vw, 15px);
+            font-size: clamp(14px, 4vw, 16px);
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             line-height: 1.4;
         }
 
         .feature-desc {
-            font-size: clamp(11px, 3.2vw, 13px);
+            font-size: clamp(12px, 3.2vw, 14px);
             color: var(--text-secondary);
             line-height: 1.5;
         }
@@ -233,8 +228,9 @@
             text-align: center;
             padding: 28px 0 36px;
             color: var(--text-secondary);
-            font-size: clamp(11px, 3vw, 12px);
+            font-size: clamp(12px, 3vw, 13px);
             width: 100%;
+            font-weight: 500;
         }
 
         /* Responsive Design - Mobile First */
@@ -256,7 +252,7 @@
                 min-height: 90px;
             }
             
-            .hero-title {
+            .tagline {
                 font-size: 18px;
             }
         }
@@ -322,8 +318,8 @@
                 min-height: 130px;
             }
             
-            .hero-title {
-                font-size: 28px;
+            .tagline {
+                font-size: 24px;
             }
             
             .section-title {
@@ -347,16 +343,6 @@
             }
         }
 
-        /* Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-
         /* Safe area handling for iOS */
         @supports (padding-top: env(safe-area-inset-top)) {
             body {
@@ -365,14 +351,15 @@
             }
         }
 
-        /* Prevent zoom on input focus */
-        input, textarea, select, button {
-            font-size: 16px;
-        }
-
         /* Ensure no horizontal scroll */
         body, .container {
             overflow-x: hidden;
+        }
+        
+        /* Focus styles for accessibility */
+        .platform-card:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
         }
     </style>
 </head>
@@ -381,60 +368,59 @@
         <!-- Header -->
         <header class="header">
             <div class="logo">YYMojo</div>
-            <div class="tagline">UGC创作平台｜AI手办</div>
-            <h1 class="hero-title">定制AI手办<br>打造可触摸的专属陪伴</h1>
-            <p class="hero-subtitle">一句话生成形象 · 注入会聊天的灵魂 · 打印成摆在桌上的它</p>
+            <h1 class="tagline">让喜欢的角色，<br>触手可及</h1>
+            <p class="hero-subtitle">首个 AI 手办创作平台。在线创造角色，线下拥有专属伙伴</p>
         </header>
 
         <!-- App Download Links -->
         <section class="app-links">
             <h2 class="section-title">立即下载APP</h2>
             <div class="platform-grid">
-                <a href="#" class="platform-card android" id="android-link">
-                    <div class="platform-icon">🤖</div>
+                <a href="#" class="platform-card android" id="android-link" tabindex="0">
+                    <div class="platform-icon">ANDROID</div>
                     <div class="platform-name">Android</div>
-                    <div class="platform-desc">Google Play / 应用商店</div>
+                    <div class="platform-desc">应用商店下载</div>
                 </a>
                 
-                <a href="#" class="platform-card ios" id="ios-link">
-                    <div class="platform-icon">📱</div>
+                <a href="#" class="platform-card ios" id="ios-link" tabindex="0">
+                    <div class="platform-icon">IOS</div>
                     <div class="platform-name">iOS</div>
-                    <div class="platform-desc">App Store</div>
+                    <div class="platform-desc">App Store下载</div>
                 </a>
                 
-                <a href="#" class="platform-card harmony" id="harmony-link">
-                    <div class="platform-icon">🦊</div>
+                <a href="#" class="platform-card harmony" id="harmony-link" tabindex="0">
+                    <div class="platform-icon">HARMONY</div>
                     <div class="platform-name">鸿蒙</div>
                     <div class="platform-desc">华为应用市场</div>
                 </a>
             </div>
         </section>
 
-        <!-- Features -->
-        <section class="features">
+        <!-- Core Features -->
+        <section class="core-features">
             <h2 class="section-title">核心功能</h2>
             <div class="feature-list">
                 <div class="feature-item">
-                    <div class="feature-icon">✨</div>
+                    <div class="feature-icon">🎨</div>
                     <div class="feature-text">
-                        <div class="feature-title">AI形象生成</div>
-                        <div class="feature-desc">一句话描述，AI帮你生成专属手办形象</div>
+                        <div class="feature-title">自由创作</div>
+                        <div class="feature-desc">无需代码，在 Studio 里像搭积木一样组合角色的形象、性格、声音和技能</div>
                     </div>
                 </div>
                 
                 <div class="feature-item">
                     <div class="feature-icon">💬</div>
                     <div class="feature-text">
-                        <div class="feature-title">智能对话</div>
-                        <div class="feature-desc">为你的手办注入会聊天的灵魂</div>
+                        <div class="feature-title">角色陪伴</div>
+                        <div class="feature-desc">自由聊天、趣味吐槽、情绪共情。闲置时，它也会主动和你打招呼</div>
                     </div>
                 </div>
                 
                 <div class="feature-item">
                     <div class="feature-icon">🖨️</div>
                     <div class="feature-text">
-                        <div class="feature-title">3D打印</div>
-                        <div class="feature-desc">将虚拟形象变成真实的桌面陪伴</div>
+                        <div class="feature-title">实体手办</div>
+                        <div class="feature-desc">磁吸连接，线上角色在桌面上醒来。一个底座，玩遍所有角色</div>
                     </div>
                 </div>
             </div>
@@ -442,8 +428,8 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>© 2026 YYMojo. 保留所有权利。</p>
-            <p>AI手办创作平台</p>
+            <p>© 2026 YYMojo · AI 手办创作平台</p>
+            <p>让喜欢的角色，触手可及</p>
         </footer>
     </div>
 
@@ -461,13 +447,13 @@
             document.getElementById('ios-link').href = links.ios;
             document.getElementById('harmony-link').href = links.harmony;
             
-            // 添加点击事件跟踪（可选）
+            // 添加键盘支持
             document.querySelectorAll('.platform-card').forEach(card => {
-                card.addEventListener('click', function(e) {
-                    const platform = this.classList.contains('android') ? 'android' : 
-                                   this.classList.contains('ios') ? 'ios' : 'harmony';
-                    console.log(`用户点击了${platform}下载链接`);
-                    // 可以在这里添加分析代码
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
                 });
             });
         });
@@ -476,37 +462,17 @@
         function handleResize() {
             const isMobile = window.innerWidth <= 768;
             document.body.classList.toggle('mobile-view', isMobile);
-            
-            // 强制重新计算布局
-            document.body.style.display = 'none';
-            setTimeout(() => {
-                document.body.style.display = '';
-            }, 10);
         }
         
         window.addEventListener('resize', handleResize);
         handleResize(); // 初始化
-        
-        // 处理深色模式（如果需要）
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            // 可以添加深色模式样式
-        }
         
         // 防止页面缩放
         document.addEventListener('touchstart', function(event) {
             if (event.touches.length > 1) {
                 event.preventDefault();
             }
-        });
-        
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
+        }, { passive: false });
     </script>
 </body>
 </html>
