@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="YYMojo - AI手办创作平台 | 一句话生成形象 · 注入会聊天的灵魂 · 打印成摆在桌上的它">
+    <title>YYMojo - 移动端下载</title>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 40px 0 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* App Links Section */
+        .app-links {
+            padding: 30px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .platform-grid {
+            display: grid;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .platform-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .platform-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .android .platform-icon {
+            color: #3ddc84;
+        }
+
+        .ios .platform-icon {
+            color: #007aff;
+        }
+
+        .harmony .platform-icon {
+            color: #ff6a00;
+        }
+
+        .platform-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .platform-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 30px 0;
+            background: var(--white);
+        }
+
+        .feature-list {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0 40px;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 480px;
+                margin: 0 auto;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .platform-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .platform-card {
+                min-height: 140px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .header {
+                padding: 30px 0 20px;
+            }
+            
+            .hero-title {
+                font-size: 22px;
+            }
+            
+            .platform-grid {
+                gap: 12px;
+            }
+            
+            .platform-card {
+                padding: 16px;
+                min-height: 110px;
+            }
+        }
+
+        /* Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Safe area handling for iOS */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">YYMojo</div>
+            <div class="tagline">UGC创作平台｜AI手办</div>
+            <h1 class="hero-title">定制AI手办<br>打造可触摸的专属陪伴</h1>
+            <p class="hero-subtitle">一句话生成形象 · 注入会聊天的灵魂 · 打印成摆在桌上的它</p>
+        </header>
+
+        <!-- App Download Links -->
+        <section class="app-links">
+            <h2 class="section-title">立即下载APP</h2>
+            <div class="platform-grid">
+                <a href="#" class="platform-card android" id="android-link">
+                    <div class="platform-icon">🤖</div>
+                    <div class="platform-name">Android</div>
+                    <div class="platform-desc">Google Play / 应用商店</div>
+                </a>
+                
+                <a href="#" class="platform-card ios" id="ios-link">
+                    <div class="platform-icon">📱</div>
+                    <div class="platform-name">iOS</div>
+                    <div class="platform-desc">App Store</div>
+                </a>
+                
+                <a href="#" class="platform-card harmony" id="harmony-link">
+                    <div class="platform-icon">🦊</div>
+                    <div class="platform-name">鸿蒙</div>
+                    <div class="platform-desc">华为应用市场</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <h2 class="section-title">核心功能</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-text">
+                        <div class="feature-title">AI形象生成</div>
+                        <div class="feature-desc">一句话描述，AI帮你生成专属手办形象</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-text">
+                        <div class="feature-title">智能对话</div>
+                        <div class="feature-desc">为你的手办注入会聊天的灵魂</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🖨️</div>
+                    <div class="feature-text">
+                        <div class="feature-title">3D打印</div>
+                        <div class="feature-desc">将虚拟形象变成真实的桌面陪伴</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2026 YYMojo. 保留所有权利。</p>
+            <p>AI手办创作平台</p>
+        </footer>
+    </div>
+
+    <script>
+        // 预留超链接入口配置
+        document.addEventListener('DOMContentLoaded', function() {
+            // 这里可以配置实际的下载链接
+            const links = {
+                android: 'http://download.yymojo.com/zvyjd61x', // Android下载链接
+                ios: '#',     // 替换为实际的iOS下载链接  
+                harmony: '#'  // 替换为实际的鸿蒙下载链接
+            };
+            
+            document.getElementById('android-link').href = links.android;
+            document.getElementById('ios-link').href = links.ios;
+            document.getElementById('harmony-link').href = links.harmony;
+            
+            // 添加点击事件跟踪（可选）
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    const platform = this.classList.contains('android') ? 'android' : 
+                                   this.classList.contains('ios') ? 'ios' : 'harmony';
+                    console.log(`用户点击了${platform}下载链接`);
+                    // 可以在这里添加分析代码
+                });
+            });
+        });
+
+        // 响应式处理
+        function handleResize() {
+            const isMobile = window.innerWidth <= 768;
+            document.body.classList.toggle('mobile-view', isMobile);
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // 初始化
+        
+        // 处理深色模式（如果需要）
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // 可以添加深色模式样式
+        }
+    </script>
+</body>
+</html>
